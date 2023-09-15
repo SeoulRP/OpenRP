@@ -376,7 +376,6 @@ public class OpenRP extends JavaPlugin {
 		/*
 		 * } });
 		 */
-
 	}
 
 	/**
