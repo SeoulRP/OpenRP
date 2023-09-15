@@ -244,6 +244,16 @@ public class PAPI_Time extends PlaceholderExpansion {
                                         }
                                     }
                                     return "";
+                                case "weekday":
+                                    for (TimeHandler th : this.plugin.getTime().getTimes()) {
+                                        if (th.getWorld().getName().equals(split[1])) {
+                                            String s = this.plugin.getTime().getDayFromNumber(th.getDay(), th
+                                                    .getMonth(), th
+                                                    .getYear());
+                                            return s;
+                                        }
+                                    }
+                                    return "";
                                 case "month":
                                     for (TimeHandler th : plugin.getTime().getTimes()) {
                                         if (th.getWorld().getName().equals(split[1])) {
@@ -309,6 +319,18 @@ public class PAPI_Time extends PlaceholderExpansion {
                     if (th.getWorld().equals(plugin.getServer().getPlayer(player.getName()).getLocation().getWorld())) {
                         String s = ((Integer) th.getDay()).toString();
                         s = th.getDay() < 10 ? "0" + s : s;
+                        return s;
+                    }
+                }
+                return "";
+            case "world_weekday":
+                if (this.plugin.getServer().getPlayer(player.getName()) == null)
+                    return "";
+                for (TimeHandler th : this.plugin.getTime().getTimes()) {
+                    if (th.getWorld().equals(this.plugin.getServer().getPlayer(player.getName()).getLocation().getWorld())) {
+                        String s = this.plugin.getTime().getDayFromNumber(th.getDay(), th
+                                .getMonth(), th
+                                .getYear());
                         return s;
                     }
                 }
